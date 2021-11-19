@@ -40,8 +40,8 @@ public class ProductDaoImpl implements ProductDao {
     public LinkedList<Product> viewProducts() {
         System.out.println("PID\t\tName\t\tQuantity\tPrice($)");
         for (Product product : products) {
-            System.out.println(product.getPid() + "\t\t" + product.getPname() + "\t\t" + product.getPrice() + "\t\t"
-                    + product.getQty());
+            System.out.println(product.getPid() + "\t\t" + product.getPname() + "\t\t" + product.getQty() + "\t\t"
+                    + product.getPrice());
         }
         return products;
     }
@@ -52,8 +52,8 @@ public class ProductDaoImpl implements ProductDao {
         System.out.println("PID\t\tName\t\tQuantity\tPrice($)");
         for (Product product : products) {
             if (product.getPid() == pid)
-                System.out.println(product.getPid() + "\t\t" + product.getPname() + "\t\t" + product.getPrice() + "\t\t"
-                        + product.getQty());
+                System.out.println(product.getPid() + "\t\t" + product.getPname() + "\t\t" + product.getQty() + "\t\t"
+                        + product.getPrice());
         }
         return products;
     }
