@@ -19,10 +19,10 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void addProducts() {
-        int pid;
-        do {
+        int k = 1;
+        while (k == 1) {
             System.out.println("Enter the product id: ");
-            pid = scan.nextInt();
+            int pid = scan.nextInt();
             System.out.println("Enter the product name: ");
             String pname = scan.next();
             System.out.println("Enter the product quantity: ");
@@ -32,7 +32,9 @@ public class ProductDaoImpl implements ProductDao {
             Product product4 = new Product(pid, pname, qty, price);
             products.add(product4);
             System.out.println("Added Successfully");
-        } while (pid != 0);
+            System.out.println("Do you want to add one more records: Press Yes(1) otherwise 0");
+            k = scan.nextInt();
+        }
 
     }
 
@@ -60,8 +62,10 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void updateProduct(int pid) {
+        int k = 0;
         for (Product product : products) {
             if (product.getPid() == pid) {
+                k++;
                 System.out.println("Enter product new name: ");
                 product.setPname(scan.next());
                 System.out.println("Enter product new quantity: ");
@@ -70,18 +74,22 @@ public class ProductDaoImpl implements ProductDao {
                 product.setPrice(scan.nextInt());
             }
         }
+        if (k == 0)
+            System.out.println("Product ID not available");
     }
 
     @Override
     public void deleteProduct(int pid) {
-
+        int k = 0;
         for (Product product : products) {
             if (product.getPid() == pid) {
-                products.remove(pid);
+                k++;
+                products.remove(product);
                 System.out.println("Student record deleted");
-
-            } else
-                System.out.println("record not found");
+            }
         }
+        if (k == 0)
+            System.out.println("Record not found");
+
     }
 }
